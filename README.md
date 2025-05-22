@@ -1,4 +1,11 @@
-# Maintenance Message
+> [!NOTE]
+> This is basically the same repo as https://github.com/nelsonjchen/speedtest-rs with very slight changes in how the output is displayed.
+> Moreover, I renamed the binary to `doppler` because I liked the name and wanted to distinguish it.
+> Otherwise, the code is exactly the same.
+
+# Maintenance Message from upstream
+
+Upstream repo: 
 
 I’m sorry for the pun, but I no longer have the bandwidth to maintain or develop this project. I also don’t have the bandwidth to search for or evaluate new maintainers—and, frankly, I’m not terribly interested in doing so after hearing about stuff like xz. This project isn't "xz", but I don't want to make a bad choice.
 
