@@ -27,6 +27,16 @@ Alternatives (ordered by GitHub stars at the time of PR):
 
 Status: This is usable for lower-end residential connections using ["HTTP Legacy Fallback"][http_legacy_fallback]
 
+
+# Installation for `doppler`
+
+For now just use:
+```
+cargo install --git https://github.com/ajinkya-k/pretty-speedtest-rs
+```
+
+<details>
+<summary> old installation instructions for upstream</summary>
 ## Install from AUR
 
 ```sh
@@ -69,6 +79,8 @@ There are also other speedtest.net using tools using different approaches to be 
 https://github.com/traetox/speedtest
 
 This example seems different as it appears to just use TCP connections and some protocol. It's probably more suitable to high-speed connections. TODO: Add a default TCP-mode.
+
+</details>
 
 ## Use as a Library
 
