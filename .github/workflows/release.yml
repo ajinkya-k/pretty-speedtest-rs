@@ -12,7 +12,7 @@ name: Create Release
 env:
   # Could, potentially automatically parse
   # the bin name, but let's do it automatically for now.
-  RELEASE_BIN: pretty-speedtest-rs
+  RELEASE_BIN: doppler
 
   # Space separated paths to include in the archive.
   # Start relative paths with a dot if you don't want
