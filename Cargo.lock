@@ -1028,6 +1028,27 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
 
 [[package]]
+name = "pretty-speedtest-rs"
+version = "0.2.0"
+dependencies = [
+ "chrono",
+ "clap",
+ "colored 3.0.0",
+ "csv",
+ "env_logger",
+ "iter-read",
+ "log",
+ "md5",
+ "mockito",
+ "rayon",
+ "reqwest",
+ "roxmltree",
+ "serde",
+ "spinoff",
+ "url",
+]
+
+[[package]]
 name = "proc-macro2"
 version = "1.0.86"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1431,27 +1452,6 @@ checksum = "ce305eb0b4296696835b71df73eb912e0f1ffd2556a501fcede6e0c50349191c"
 dependencies = [
  "libc",
  "windows-sys 0.52.0",
-]
-
-[[package]]
-name = "speedtest-rs"
-version = "0.2.0"
-dependencies = [
- "chrono",
- "clap",
- "colored 3.0.0",
- "csv",
- "env_logger",
- "iter-read",
- "log",
- "md5",
- "mockito",
- "rayon",
- "reqwest",
- "roxmltree",
- "serde",
- "spinoff",
- "url",
 ]
 
 [[package]]

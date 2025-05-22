@@ -3,8 +3,8 @@ authors = ["Nelson Chen <nelson@mindflakes.com>"]
 description = "Speedtest.net testing utility and crate"
 exclude = ["tests/config/*"]
 license = "MIT OR Apache-2.0"
-name = "speedtest-rs"
-repository = "https://github.com/nelsonjchen/speedtest-rs"
+name = "pretty-speedtest-rs"
+repository = "https://github.com/ajinkya-k/pretty-speedtest-rs"
 version = "0.2.0"
 edition = "2021"
 
