@@ -21,6 +21,8 @@ serde = { version = "1.0.204", features = ["derive"] }
 roxmltree = "0.20.0"
 rayon = "1.10.0"
 iter-read = "1.0.1"
+colored = "3.0.0"
+spinoff = "0.8.0"
 
 [dependencies.reqwest]
 version = "0.12"
@@ -30,3 +32,7 @@ features = ["blocking"]
 # default = ["log"]
 rustls-tls = ["reqwest/rustls-tls"]
 log = ["dep:log"]
+
+[[bin]]
+name = "doppler"
+path = "src/main.rs"

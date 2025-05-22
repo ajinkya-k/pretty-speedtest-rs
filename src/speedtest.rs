@@ -309,7 +309,7 @@ pub fn test_upload_with_progress_and_config<F>(
 where
     F: Fn() + Send + Sync + 'static,
 {
-    info!("Testing Upload speed");
+    info!("Testing Upload speed123");
 
     let mut sizes = vec![];
     for &size in &config.sizes.upload {
