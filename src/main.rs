@@ -11,11 +11,10 @@ use crate::speedtest_csv::SpeedTestCsvResult;
 use chrono::Utc;
 use clap::Parser;
 use colored::Colorize;
-use spinoff::{Spinner, spinners, Color};
 #[cfg(feature = "log")]
 use log::info;
-#[cfg(not(feature = "log"))]
-use log::info;
+use spinoff::{spinners, Color, Spinner};
+
 use std::io::{self, Write};
 use url::Url;
 
@@ -148,9 +147,11 @@ fn main() -> Result<(), error::SpeedTestError> {
             println!("Selecting best server based on latency...");
         }
 
+        #[cfg(feature = "log")]
         info!("Five Closest Servers");
         server_list_sorted.truncate(5);
         for _server in &server_list_sorted {
+            #[cfg(feature = "log")]
             info!("Close Server: {_server:?}");
         }
     }
@@ -185,14 +186,9 @@ fn main() -> Result<(), error::SpeedTestError> {
 
     if !matches.no_download {
         if !matches.simple && !machine_format {
-            let mut spinner = Spinner::new(spinners::Dots, "Testing Download Speed", Color::Blue); 
-            // print!("Testing download speed123");
-            inner_download_measurement = speedtest::test_download_with_progress_and_config(
-                best_server,
-                || {},
-                &mut config,
-            )?;
-            // println!();
+            let mut spinner = Spinner::new(spinners::Dots, "Testing Download Speed", Color::Blue);
+            inner_download_measurement =
+                speedtest::test_download_with_progress_and_config(best_server, || {}, &mut config)?;
             spinner.success("Testing Download Speed");
         } else {
             inner_download_measurement =
@@ -296,6 +292,7 @@ fn main() -> Result<(), error::SpeedTestError> {
     }
 
     if matches.share && !machine_format {
+        #[cfg(feature = "log")]
         info!("Share Request {speedtest_result:?}",);
         println!(
             "Share results: {}",
