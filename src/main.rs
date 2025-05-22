@@ -186,7 +186,7 @@ fn main() -> Result<(), error::SpeedTestError> {
 
     if !matches.no_download {
         if !matches.simple && !machine_format {
-            let mut spinner = Spinner::new(spinners::Dots, "Testing Download Speed", Color::Blue); 
+            let mut spinner = Spinner::new(spinners::Dots, "Testing Download Speed", Color::Blue);
             // print!("Testing download speed123");
             inner_download_measurement = speedtest::test_download_with_progress_and_config(
                 best_server,
