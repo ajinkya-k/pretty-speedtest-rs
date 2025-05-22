@@ -10,6 +10,8 @@ mod speedtest_servers_config;
 use crate::speedtest_csv::SpeedTestCsvResult;
 use chrono::Utc;
 use clap::Parser;
+use colored::Colorize;
+use spinoff::{Spinner, spinners, Color};
 #[cfg(feature = "log")]
 use log::info;
 #[cfg(not(feature = "log"))]
@@ -183,13 +185,15 @@ fn main() -> Result<(), error::SpeedTestError> {
 
     if !matches.no_download {
         if !matches.simple && !machine_format {
-            print!("Testing download speed");
+            let mut spinner = Spinner::new(spinners::Dots, "Testing Download Speed", Color::Blue); 
+            // print!("Testing download speed123");
             inner_download_measurement = speedtest::test_download_with_progress_and_config(
                 best_server,
-                print_dot,
+                || {},
                 &mut config,
             )?;
-            println!();
+            // println!();
+            spinner.success("Testing Download Speed");
         } else {
             inner_download_measurement =
                 speedtest::test_download_with_progress_and_config(best_server, || {}, &mut config)?;
@@ -198,12 +202,14 @@ fn main() -> Result<(), error::SpeedTestError> {
         if !machine_format {
             if matches.bytes {
                 println!(
-                    "Download: {:.2} Mbyte/s",
+                    "{} {:.2} Mbyte/s",
+                    "Download:".green().bold(),
                     ((inner_download_measurement.kbps() / 8) as f32 / 1000.00)
                 );
             } else {
                 println!(
-                    "Download: {:.2} Mbit/s",
+                    "{} {:.2} Mbit/s",
+                    "Download:".green().bold(),
                     (inner_download_measurement.kbps()) as f32 / 1000.00
                 );
             }
@@ -218,10 +224,10 @@ fn main() -> Result<(), error::SpeedTestError> {
 
     if !matches.no_upload {
         if !matches.simple && !machine_format {
-            print!("Testing upload speed");
+            let mut spinner = Spinner::new(spinners::Dots, "Testing Upload Speed", Color::Blue);
             inner_upload_measurement =
-                speedtest::test_upload_with_progress_and_config(best_server, print_dot, &config)?;
-            println!();
+                speedtest::test_upload_with_progress_and_config(best_server, || {}, &config)?;
+            spinner.success("Testing Upload Speed");
         } else {
             inner_upload_measurement =
                 speedtest::test_upload_with_progress_and_config(best_server, || {}, &config)?;
@@ -230,12 +236,14 @@ fn main() -> Result<(), error::SpeedTestError> {
         if !machine_format {
             if matches.bytes {
                 println!(
-                    "Upload: {:.2} Mbyte/s",
+                    "{} {:.2} Mbyte/s",
+                    "Upload".green().bold(),
                     ((inner_upload_measurement.kbps() / 8) as f32 / 1000.00)
                 );
             } else {
                 println!(
-                    "Upload: {:.2} Mbit/s",
+                    "{} {:.2} Mbit/s",
+                    "Upload:".green().bold(),
                     (inner_upload_measurement.kbps() as f32 / 1000.00)
                 );
             }
@@ -308,6 +316,7 @@ fn main() -> Result<(), error::SpeedTestError> {
     Ok(())
 }
 
+#[allow(dead_code)]
 fn print_dot() {
     print!(".");
     io::stdout().flush().unwrap();
