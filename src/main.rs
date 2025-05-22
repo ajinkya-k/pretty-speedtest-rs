@@ -13,8 +13,6 @@ use clap::Parser;
 use colored::Colorize;
 #[cfg(feature = "log")]
 use log::info;
-#[cfg(not(feature = "log"))]
-use log::info;
 use spinoff::{spinners, Color, Spinner};
 
 use std::io::{self, Write};
@@ -149,9 +147,11 @@ fn main() -> Result<(), error::SpeedTestError> {
             println!("Selecting best server based on latency...");
         }
 
+        #[cfg(feature = "log")]
         info!("Five Closest Servers");
         server_list_sorted.truncate(5);
         for _server in &server_list_sorted {
+            #[cfg(feature = "log")]
             info!("Close Server: {_server:?}");
         }
     }
@@ -292,6 +292,7 @@ fn main() -> Result<(), error::SpeedTestError> {
     }
 
     if matches.share && !machine_format {
+        #[cfg(feature = "log")]
         info!("Share Request {speedtest_result:?}",);
         println!(
             "Share results: {}",

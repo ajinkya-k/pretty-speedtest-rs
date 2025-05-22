@@ -1,3 +1,4 @@
+#[cfg(feature = "log")]
 macro_rules! info {
     // info!(target: "my_target", key1 = 42, key2 = true; "a {} event", "log")
     // info!(target: "my_target", "a {} event", "log")
@@ -6,5 +7,5 @@ macro_rules! info {
     // info!("a {} event", "log")
     ($($arg:tt)+) => {};
 }
-
+#[cfg(feature = "log")]
 pub(crate) use info;
