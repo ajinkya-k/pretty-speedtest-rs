@@ -8,6 +8,10 @@ repository = "https://github.com/nelsonjchen/speedtest-rs"
 version = "0.2.0"
 edition = "2021"
 
+[[bin]]
+name = "doppler"
+path = "src/main.rs"
+
 [dependencies]
 clap = { version = "4.5.10", features = ["derive"] }
 chrono = "0.4.38"
@@ -33,6 +37,4 @@ features = ["blocking"]
 rustls-tls = ["reqwest/rustls-tls"]
 log = ["dep:log"]
 
-[[bin]]
-name = "doppler"
-path = "src/main.rs"
+
