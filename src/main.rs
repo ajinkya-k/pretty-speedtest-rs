@@ -11,11 +11,12 @@ use crate::speedtest_csv::SpeedTestCsvResult;
 use chrono::Utc;
 use clap::Parser;
 use colored::Colorize;
-use spinoff::{Spinner, spinners, Color};
 #[cfg(feature = "log")]
 use log::info;
 #[cfg(not(feature = "log"))]
 use log::info;
+use spinoff::{spinners, Color, Spinner};
+
 use std::io::{self, Write};
 use url::Url;
 
